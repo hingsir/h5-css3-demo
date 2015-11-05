@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;padding: 0;
+        }
+        a{
+            position: relative;
+            float:left;
+            width: 100px;
+            height: 200px;
+            margin: 10px;
+            cursor:pointer;
+            border: 1px solid #ccc;
+        }
+        a::before{
+            position:absolute;
+            visibility: hidden;
+            top:-1px;
+            left:-1px;
+            width:0;
+            height:0;
+            border:2px solid #fe6900;
+            content:'';
+            border-bottom:transparent;
+            border-right:transparent;
+            transition:all .5s;
+        }
+        a::after{
+            position:absolute;
+            visibility: hidden;
+            bottom:-1px;
+            right:-1px;
+            width:0;
+            height:0;
+            content:'';
+            border:2px solid #fe6900;
+            border-top:transparent;
+            border-left:transparent;
+            transition:all .5s;
+        }
+        a:hover::before,a:hover::after{
+            visibility: visible;
+            height:100%;
+            width:100%;
+            transition:all .5s;
+        }
+
+    </style>
+</head>
+<body>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+        <a href=""></a>
+</body>
+</html>
