@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>clock</title>
+    <style>
+    * {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+    .clock {
+        position: relative;
+        width: 200px;
+        height: 200px;
+        border: 2px solid #ccc;
+        border-radius: 50%;
+        background: #e1e1e1;
+    }
+    .clock:before {
+        content: " ";
+        width: 20px;
+        height: 20px;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-10px, -10px);
+        border-radius: 10px;
+        background: #999;
+    }
+    .clock li {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        background: #999;
+    }
+    .hour {
+        width: 30%;
+        height: 6px;
+        transform-origin: 4px 3px;
+        animation: hour 43200s linear infinite;
+    }
+    .minute {
+        width: 40%;
+        height: 4px;
+        transform-origin: 6px 2px;
+        animation: minute 3600s linear infinite;
+    }
+    .second {
+        width: 55%;
+        height: 2px;
+        transform-origin: 20px 1px;
+        animation: second 60s steps(60, end) infinite;
+    }
+    </style>
+</head>
+
+<body>
+    <div id="container" style="padding:100px;">
+        <ul class="clock">
+            <li class="hour"></li>
+            <li class="minute"></li>
+            <li class="second"></li>
+        </ul>
+    </div>
+    <script type="text/javascript">
+    function $(className) {
+        return document.getElementsByClassName(className);
+    }
+    var $hour = $('hour')[0],
+        $minute = $('minute')[0],
+        $second = $('second')[0];
+    var now = new Date(),
+        h = now.getHours(),
+        m = now.getMinutes(),
+        s = now.getSeconds();
+    var hourDeg = ((h + m / 60 + s / 3600) % 12) * 30 - 90,
+        minuteDeg = ((m + s / 60) % 60) * 6 - 90,
+        secondDeg = (s % 60) * 6 - 90;
+    $hour.style.transform = 'translate(-4px,-3px) rotate(' + hourDeg + 'deg)';
+    $minute.style.transform = 'translate(-6px,-2px) rotate(' + minuteDeg + 'deg)';
+    $second.style.transform = 'translate(-20px,-1px) rotate(' + secondDeg + 'deg)';
+    var style = document.getElementsByTagName('style')[0];
+    style.appendChild(document.createTextNode('@keyframes hour { to { transform: translate(-4px,-3px) rotate(' + (hourDeg + 360) + 'deg);}}'))
+    style.appendChild(document.createTextNode('@keyframes minute { to { transform: translate(-6px,-2px) rotate(' + (minuteDeg + 360) + 'deg);}}'))
+    style.appendChild(document.createTextNode('@keyframes second { to { transform: translate(-20px,-1px) rotate(' + (secondDeg + 360) + 'deg);}}'))
+    </script>
+</body>
+
+</html>
