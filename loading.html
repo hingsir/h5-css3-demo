@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>loading</title>
+    <style>
+        *{
+            margin: 0;padding:0;
+        }
+        .loading{
+            position: relative;
+            width: 10em;
+            height: 10em;
+            box-shadow: inset 0 0 0 1em #00bcd4;
+            border-radius:50%;
+        }
+        .loading::before{
+            content:'';
+            position: absolute;
+            left:-0.1em;
+            top:-0.1em;
+            width:5.2em;
+            height: 10.2em;
+            background: #fff;
+            border-radius:10.2em 0  0 10.2em;
+            transform-origin:5.2em 5.1em;
+            animation:before 2s infinite ease 1.5s;
+        }
+        .loading::after{
+            content:'';
+            position: absolute;
+            top:-0.1em;
+            left:5.1em;
+            width: 5.2em;
+            height:10.2em;
+            background: #fff;
+            border-radius: 0 10.2em 10.2em 0;
+            transform-origin:0em 5.1em;
+            animation:after 2s infinite ease;
+        }
+        @keyframes before{
+            from{
+               transform:rotate(0deg);
+            }
+            to{
+               transform:rotate(360deg);
+            }
+        }
+        @keyframes after{
+            from{
+               transform:rotate(0deg);
+            }
+            to{
+               transform:rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="container" style="padding:100px;">
+        <div class="loading"></div>
+    </div>
+</body>
+</html>
